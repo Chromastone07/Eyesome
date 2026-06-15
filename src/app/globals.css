@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0f1117;
+  color: #f0f0f0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Lined-paper texture for article pages */
+/* Clean reading background for article and legal pages */
+.paper-bg {
+  background-color: #fafbfd;
+  background-image:
+    radial-gradient(circle at 100% 0%, rgba(58, 174, 224, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 0% 100%, rgba(253, 233, 104, 0.05) 0%, transparent 40%);
+  background-attachment: local;
+  min-height: 100%;
+}
+
+/* Custom scrollbar to match brand */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0f1117;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a3050;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a4070;
+}
+
+/* Focus visibility for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #fde968;
+  outline-offset: 2px;
+}

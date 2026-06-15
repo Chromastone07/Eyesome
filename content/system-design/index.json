@@ -1,0 +1,8 @@
+{
+  "title": "30 Days of System Design",
+  "description": "From the big picture to load balancers, databases, caching, and trade-offs   build the mental models real engineers use to design systems at scale.",
+  "totalDays": 30,
+  "icon": "🗂",
+  "accent": "yellow",
+  "level": "Beginner to Intermediate"
+}
