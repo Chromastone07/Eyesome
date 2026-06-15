@@ -106,6 +106,11 @@ export default async function DayPage({
       mdxOptions: {
         remarkPlugins: [remarkGfm],
       },
+      // next-mdx-remote v6 blocks {} JS expressions in MDX by default.
+      // Our content is fully trusted (authored by us), and components like
+      // <Recap items={[...]} /> rely on JSX expression props, so we opt back in.
+      // blockDangerousJS stays at its default (true) for extra protection.
+      blockJS: false,
     },
   })
 
