@@ -1,15 +1,19 @@
-import { ReactNode, isValidElement } from 'react'
+import { HTMLAttributes, isValidElement } from 'react'
 
 interface CodeChildProps {
   className?: string
   children?: string
 }
 
-export default function CodeBlock(props: { children?: ReactNode; [key: string]: unknown }) {
+export default function CodeBlock(props: HTMLAttributes<HTMLPreElement>) {
   const child = props.children
 
   if (!isValidElement(child)) {
-    return <pre className="not-prose my-6 overflow-x-auto rounded-lg bg-ink p-4">{props.children}</pre>
+    return (
+      <pre className="not-prose my-6 overflow-x-auto rounded-lg bg-ink p-4">
+        {props.children}
+      </pre>
+    )
   }
 
   const { className, children } = child.props as CodeChildProps
@@ -30,8 +34,10 @@ export default function CodeBlock(props: { children?: ReactNode; [key: string]: 
   }
 
   return (
-    <pre className="not-prose overflow-x-auto rounded-lg bg-ink p-4 my-6">
-      <code className={`font-mono text-[13px] leading-relaxed text-white/90 ${className ?? ''}`}>
+    <pre className="not-prose my-6 overflow-x-auto rounded-lg bg-ink p-4">
+      <code
+        className={`font-mono text-[13px] leading-relaxed text-white/90 ${className ?? ''}`}
+      >
         {children}
       </code>
     </pre>
