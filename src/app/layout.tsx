@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 import CookieBanner from '@/components/CookieBanner'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://eyesome-tech.vercel.app'),
   title: 'Eyesome Tech   Learn Anything in 30 Days',
   description:
     'Structured 30/45-day learning challenges for developers. Start with System Design   daily lessons that build real mental models.',
