@@ -18,7 +18,7 @@ export default function Navbar() {
             Challenges
           </Link>
           <Link
-            href="/system-design/day-01"
+            href="/#challenges"
             className="whitespace-nowrap rounded-full bg-accent-yellow px-3 py-1.5 font-body text-xs font-semibold text-ink transition-opacity hover:opacity-90 sm:px-4 sm:text-sm"
           >
             Start Learning

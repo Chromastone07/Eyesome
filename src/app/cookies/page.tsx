@@ -1,12 +1,12 @@
 import LegalLayout from '@/components/LegalLayout'
 
-export const metadata = { title: 'Cookie Policy — Design30' }
+export const metadata = { title: 'Cookie Policy   Eyesome Tech' }
 
 export default function CookiesPage() {
   return (
     <LegalLayout title="Cookie Policy" updated="June 2026">
       <p>
-        This page explains how Design30 uses cookies and similar
+        This page explains how Eyesome Tech uses cookies and similar
         technologies when you visit our website.
       </p>
 

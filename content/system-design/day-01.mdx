@@ -24,14 +24,14 @@ Strip away the complexity, and almost every system follows the same basic skelet
 
 ```mermaid
 graph TD
-    U[User]   > LB[Load Balancer]
-    LB   > S1[Server 1]
-    LB   > S2[Server 2]
-    LB   > S3[Server 3]
-    S1   > C[Cache]
-    S2   > C
-    S3   > C
-    C   > DB[(Database)]
+    U[User]   --> LB[Load Balancer]
+    LB   --> S1[Server 1]
+    LB   --> S2[Server 2]
+    LB   --> S3[Server 3]
+    S1   --> C[Cache]
+    S2   --> C
+    S3   --> C
+    C   --> DB[(Database)]
 ```
 
   The **user** sends a request (opens an app, clicks a button)

@@ -1,19 +1,19 @@
 import LegalLayout from '@/components/LegalLayout'
 
-export const metadata = { title: 'Terms of Use — Design30' }
+export const metadata = { title: 'Terms of Use   Eyesome Tech' }
 
 export default function TermsPage() {
   return (
     <LegalLayout title="Terms of Use" updated="June 2026">
       <p>
-        Welcome to Design30. By accessing or using this website, you agree to
+        Welcome to Eyesome Tech. By accessing or using this website, you agree to
         the following terms. Please read them carefully.
       </p>
 
       <h2>Educational Purpose</h2>
       <p>
-        All content on this site — articles, diagrams, and challenge
-        materials — is provided for educational purposes only. While we aim
+        All content on this site   articles, diagrams, and challenge
+        materials   is provided for educational purposes only. While we aim
         for accuracy, technical concepts evolve, and content may not reflect
         the latest tools, versions, or industry practices at all times.
       </p>
@@ -21,15 +21,15 @@ export default function TermsPage() {
       <h2>No Professional Advice</h2>
       <p>
         Nothing on this site constitutes professional, legal, or financial
-        advice. Decisions you make based on this content — including
-        architectural, career, or business decisions — are your own
+        advice. Decisions you make based on this content   including
+        architectural, career, or business decisions   are your own
         responsibility.
       </p>
 
       <h2>Intellectual Property</h2>
       <p>
         Unless otherwise stated, all written content, diagrams, and visual
-        designs on this site are the property of Design30. You may read and
+        designs on this site are the property of Eyesome Tech. You may read and
         share links to our content, but you may not copy, republish, or
         redistribute our articles or visuals without permission.
       </p>

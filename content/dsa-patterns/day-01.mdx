@@ -1,0 +1,57 @@
+---
+title: "The Sliding Window Pattern"
+day: 1
+topic: "Arrays & Strings"
+---
+
+Stop solving algorithmic problems by memorizing the solutions. If you try to memorize 500 LeetCode solutions, you'll fail. If you learn 15 underlying **patterns**, you can solve almost anything. Today, we look at the most famous one: the Sliding Window.
+
+## The Concept
+
+The Sliding Window is a technique used to perform operations on a specific window size of a given array or linked list, such as finding the longest subarray containing all 1s.
+
+Instead of computing the properties of the window from scratch at each step (which is often $O(N^2)$), we slide the window by removing the element going out of the window and adding the new element entering it. This reduces the time complexity to $O(N)$.
+
+<Analogy>
+Imagine you are looking at a long train through a small window in a fence. You can only see 3 train cars at a time. As the train moves forward, one car exits your view on the left, and a new car enters your view on the right. You don't have to re-examine all 3 cars; you just note what left and what entered.
+</Analogy>
+
+## Recognizing the Pattern
+
+You should immediately think of the Sliding Window pattern when you see:
+1. The problem involves a **contiguous subarray** or **substring**.
+2. You need to find a maximum, minimum, longest, shortest, or specific sum/value.
+3. The data structure is a linear structure like an Array, String, or Linked List.
+
+## Fixed vs Dynamic Windows
+
+There are two main variations of this pattern.
+
+### Fixed Window
+The size of the window `k` remains constant throughout the entire array.
+**Example**: "Find the maximum sum of any contiguous subarray of size `k`."
+
+### Dynamic Window
+The size of the window grows or shrinks based on a specific condition.
+**Example**: "Find the smallest contiguous subarray whose sum is greater than or equal to `S`."
+
+<Mistake>
+A common beginner mistake is using a nested `for` loop to check every single subarray combination. While this works, it results in an $O(N^2)$ time complexity which will cause a Time Limit Exceeded (TLE) error in almost every technical interview.
+</Mistake>
+
+## Putting It Together
+
+By keeping track of a `left` and `right` pointer, you define the boundaries of your window. You expand the window by moving `right`, and you shrink it by moving `left` when a condition is violated.
+
+Tomorrow, we'll implement both the fixed and dynamic sliding window in code, and you'll see why it's considered magic by beginners.
+
+<Recap items={[
+  "Sliding window turns O(N²) array problems into O(N).",
+  "Look for keywords: contiguous, subarray, substring, max, min.",
+  "Windows can be fixed size or dynamic size.",
+  "Keep track of window boundaries using 'left' and 'right' pointers."
+]} />
+
+<Trivia>
+The sliding window technique isn't just for coding interviews. It's heavily used in network protocols (like TCP) to manage the flow of data packets between computers without overwhelming the receiver!
+</Trivia>

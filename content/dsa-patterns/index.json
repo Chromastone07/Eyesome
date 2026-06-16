@@ -1,0 +1,8 @@
+{
+  "title": "30 Days of DSA Patterns",
+  "description": "Stop grinding random LeetCode problems. Learn the 15 underlying patterns (Sliding Window, Two Pointers) to solve any question.",
+  "totalDays": 30,
+  "icon": "🧩",
+  "accent": "blue",
+  "level": "Intermediate"
+}

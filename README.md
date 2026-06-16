@@ -1,4 +1,4 @@
-# Design30
+# Eyesome Tech
 
 Structured 30/45-day learning challenges for developers. Built with
 Next.js 14, Tailwind CSS, and MDX.
@@ -24,11 +24,11 @@ Open [http://localhost:3000](http://localhost:3000).
    ---
    ```
 3. Write content using standard Markdown plus these components:
-   - `<Analogy>...</Analogy>` — yellow callout
-   - `<Mistake>...</Mistake>` — red warning
-   - `<Trivia>...</Trivia>` — fun fact card
-   - `<Recap items={["...", "..."]} />` — green checklist
-   - `<VSCard left="" right="" leftDesc="" rightDesc="" />` — comparison
+   - `<Analogy>...</Analogy>`   yellow callout
+   - `<Mistake>...</Mistake>`   red warning
+   - `<Trivia>...</Trivia>`   fun fact card
+   - `<Recap items={["...", "..."]} />`   green checklist
+   - `<VSCard left="" right="" leftDesc="" rightDesc="" />`   comparison
 4. The day automatically appears on the challenge page and is reachable
    at `/<challenge-slug>/day-NN`.
 

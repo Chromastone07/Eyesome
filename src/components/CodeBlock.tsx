@@ -1,4 +1,5 @@
 import { HTMLAttributes, isValidElement } from 'react'
+import MermaidDiagram from './MermaidDiagram'
 
 interface CodeChildProps {
   className?: string
@@ -21,22 +22,15 @@ export default function CodeBlock(props: HTMLAttributes<HTMLPreElement>) {
   const code = typeof children === 'string' ? children.trim() : ''
 
   if (language === 'mermaid') {
-    return (
-      <div className="not-prose my-6 rounded-lg border border-ink/10 bg-ink p-5">
-        <div className="mb-2 font-heading text-xs uppercase tracking-[0.2em] text-accent-yellow">
-          Diagram
-        </div>
-        <pre className="overflow-x-auto font-mono text-[13px] leading-relaxed text-white/80">
-          {code}
-        </pre>
-      </div>
-    )
+    return <MermaidDiagram chart={code} />
   }
 
   return (
     <pre className="not-prose my-6 overflow-x-auto rounded-lg bg-ink p-4">
       <code
-        className={`font-mono text-[13px] leading-relaxed text-white/90 ${className ?? ''}`}
+        className={`font-mono text-[13px] leading-relaxed text-white/90 ${
+          className ?? ''
+        }`}
       >
         {children}
       </code>

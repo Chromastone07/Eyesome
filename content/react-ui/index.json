@@ -1,0 +1,8 @@
+{
+  "title": "30 Days of React UI Mastery",
+  "description": "Go beyond basic tutorials. Build stunning, production-ready interfaces with modern React, Tailwind, and Framer Motion.",
+  "totalDays": 30,
+  "icon": "🎨",
+  "accent": "purple",
+  "level": "Beginner to Intermediate"
+}

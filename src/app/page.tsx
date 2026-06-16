@@ -20,7 +20,7 @@ export default function HomePage() {
         </p>
       </section>
 
-      <section>
+      <section id="challenges">
         <h2 className="mb-6 font-heading text-2xl font-bold text-white">
           All Challenges
         </h2>

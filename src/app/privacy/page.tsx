@@ -1,12 +1,12 @@
 import LegalLayout from '@/components/LegalLayout'
 
-export const metadata = { title: 'Privacy Policy — Design30' }
+export const metadata = { title: 'Privacy Policy   Eyesome Tech' }
 
 export default function PrivacyPage() {
   return (
     <LegalLayout title="Privacy Policy" updated="June 2026">
       <p>
-        Design30 (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates this website to provide
+        Eyesome Tech (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates this website to provide
         free educational content. This policy explains what information we
         collect when you visit, and how it is used.
       </p>
