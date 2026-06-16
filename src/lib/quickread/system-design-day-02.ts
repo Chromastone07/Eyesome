@@ -16,13 +16,13 @@ const day02: Slide[] = [
     highlight: 'Scale Up',
     cards: [
       {
-        icon: '🖥️',
+        icon: 'Monitor',
         title: 'Make the machine bigger',
         body: 'Add more CPU, RAM, or storage to your existing server. One powerful machine handles everything.',
         accent: 'blue',
       },
       {
-        icon: '✅',
+        icon: 'CheckCircle',
         title: 'Simple, but has a ceiling',
         body: 'No code changes needed, no distributed complexity. But the biggest machine you can rent is still finite.',
         accent: 'blue',
@@ -36,13 +36,13 @@ const day02: Slide[] = [
     highlight: 'Scale Out',
     cards: [
       {
-        icon: '🖥️🖥️🖥️',
+        icon: 'Server',
         title: 'Add more machines',
         body: 'Instead of one big server, run many smaller ones and distribute load with a load balancer.',
         accent: 'green',
       },
       {
-        icon: '✅',
+        icon: 'CheckCircle',
         title: 'Near-unlimited, but complex',
         body: 'Fault tolerant and scales endlessly — but requires stateless app design and adds complexity.',
         accent: 'green',
@@ -113,7 +113,7 @@ const day02: Slide[] = [
     heading: 'How real systems do it',
     cards: [
       {
-        icon: '⚖️',
+        icon: 'Scale',
         title: 'Most systems do both',
         body: 'Start vertical to keep things simple. Move horizontal as you grow. App servers scale out, primary databases often scale up first — then out via replicas.',
         accent: 'yellow',

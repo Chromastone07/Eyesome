@@ -1,0 +1,61 @@
+---
+title: "The Two Pointers Technique"
+topic: "Two Pointers"
+---
+
+When dealing with sorted arrays or strings, searching for a pair of elements usually implies checking every combination, which gives us an **O(N²)** time complexity. 
+
+The **Two Pointers** technique allows us to optimize this to **O(N)** by placing two pointers (usually at the start and end) and moving them towards each other based on a condition.
+
+<Analogy>
+  Imagine you are trying to find two bookends that perfectly squeeze a set of books together. You place your left hand on the far left bookend, and your right hand on the far right. Depending on how much space you need, you move either your left hand in, or your right hand in, until they meet perfectly in the middle.
+</Analogy>
+
+### The Classic Problem: Two Sum II
+
+The most famous example is finding two numbers in a **sorted array** that add up to a target sum.
+
+If the array is `[1, 2, 3, 4, 6]`, and the target is `6`:
+1. Place pointer `L` at `1`, pointer `R` at `6`. Sum = `7`.
+2. `7` is greater than `6`. Since the array is sorted, moving `L` to the right will only *increase* the sum. To decrease the sum, we must move `R` to the left.
+3. Now `R` is at `4`. Sum = `5`.
+4. `5` is less than `6`. To increase the sum, we move `L` to the right.
+5. Now `L` is at `2`. Sum = `6`. We found it!
+
+### Implementation
+
+Here is how you write this cleanly in code:
+
+```javascript
+function twoSum(numbers, target) {
+  let left = 0;
+  let right = numbers.length - 1;
+
+  while (left < right) {
+    const currentSum = numbers[left] + numbers[right];
+
+    if (currentSum === target) {
+      return [left + 1, right + 1]; // Return 1-indexed positions
+    } else if (currentSum > target) {
+      right--; // Sum is too large, decrease it
+    } else {
+      left++; // Sum is too small, increase it
+    }
+  }
+  return [];
+}
+```
+
+<Mistake>
+  A very common mistake is using a `while (left <= right)` loop. If the problem requires two *distinct* elements to form a pair, the pointers must never be the same index. Always use `while (left < right)`.
+</Mistake>
+
+### Fast and Slow Pointers
+
+Another popular variation is having both pointers start at the same place, but move at different speeds (e.g., finding the middle of a Linked List, or detecting a cycle). 
+
+We will cover the Fast & Slow pointer (Tortoise and Hare) technique in detail in a future lesson, but remember that "Two Pointers" can mean *opposite ends* or *different speeds*.
+
+<Trivia>
+  The Two Pointers approach is the backbone of the famous "Quicksort" algorithm partition step, where pointers move towards each other swapping elements to sort the array in-place!
+</Trivia>

@@ -1,0 +1,68 @@
+---
+title: "Responsive Layouts with Tailwind"
+topic: "Flex & Grid"
+---
+
+Now that you understand component-based architecture, how do we actually position these blocks on a screen so they look beautiful on both a 27-inch monitor and a 6-inch phone screen?
+
+Enter **CSS Flexbox** and **CSS Grid**. Tailwind CSS makes using these layout engines incredibly fast.
+
+### Flexbox vs Grid
+
+A good rule of thumb is:
+- **Flexbox** is for 1-dimensional layouts (a single row, or a single column).
+- **Grid** is for 2-dimensional layouts (rows AND columns together).
+
+<Analogy>
+  Flexbox is like placing books on a single shelf. You can push them all to the left, space them out evenly, or center them. Grid is like building the entire bookshelf itself, defining exactly where the shelves and dividers go before placing the books.
+</Analogy>
+
+### Flexbox in Tailwind
+
+To use flexbox, you simply add the `flex` class to a container. By default, this arranges children in a row.
+
+```jsx live
+// Try modifying the justify-between class to justify-center or justify-around!
+<div className="flex justify-between items-center bg-surface p-4 rounded-xl border border-border">
+  <div className="bg-accent-blue text-white px-4 py-2 rounded-lg font-bold">Item 1</div>
+  <div className="bg-accent-purple text-white px-4 py-2 rounded-lg font-bold">Item 2</div>
+  <div className="bg-accent-yellow text-white px-4 py-2 rounded-lg font-bold">Item 3</div>
+</div>
+```
+
+If you want them in a column, add `flex-col`.
+
+### Grid in Tailwind
+
+When you need a rigid structure (like a photo gallery or a dashboard layout), use `grid`.
+
+```jsx live
+// Try changing grid-cols-3 to grid-cols-2 or grid-cols-4
+<div className="grid grid-cols-3 gap-4">
+  <div className="bg-surface h-16 rounded-xl border border-border flex items-center justify-center font-bold">1</div>
+  <div className="bg-surface h-16 rounded-xl border border-border flex items-center justify-center font-bold">2</div>
+  <div className="bg-surface h-16 rounded-xl border border-border flex items-center justify-center font-bold">3</div>
+  <div className="bg-surface h-16 rounded-xl border border-border flex items-center justify-center font-bold">4</div>
+  <div className="bg-surface h-16 rounded-xl border border-border flex items-center justify-center font-bold">5</div>
+</div>
+```
+
+### Making it Responsive
+
+Tailwind is mobile-first. This means if you write `grid-cols-1`, it applies to *all* screen sizes by default. To change the layout on larger screens, you use responsive prefixes like `sm:`, `md:`, and `lg:`.
+
+<Mistake>
+  Do not write `md:grid-cols-3 grid-cols-1`. Always write the base (mobile) class first for readability: `grid-cols-1 md:grid-cols-3`.
+</Mistake>
+
+Here is a fully responsive grid that is 1 column on mobile, 2 on tablets, and 3 on desktops:
+
+```jsx
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+  {/* Content */}
+</div>
+```
+
+<Trivia>
+  Did you know you can combine Flex and Grid? It is incredibly common to use CSS Grid for the overall page layout (Header, Sidebar, Main Content), and Flexbox for the inner components (Navbar links, Button icons).
+</Trivia>

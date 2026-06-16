@@ -16,13 +16,13 @@ const day01: Slide[] = [
     highlight: 'System Design',
     cards: [
       {
-        icon: '📈',
+        icon: 'TrendingUp',
         title: 'Apps scale up',
         body: 'Fine for 100 users, collapses at 1 million without deliberate design. Traffic spikes are unpredictable.',
         accent: 'yellow',
       },
       {
-        icon: '💥',
+        icon: 'Zap',
         title: 'Failures always happen',
         body: 'Servers crash. Networks drop. Good design expects failure and survives it gracefully.',
         accent: 'blue',
@@ -36,13 +36,13 @@ const day01: Slide[] = [
     highlight: 'System Design',
     cards: [
       {
-        icon: '⚡',
+        icon: 'Zap',
         title: 'Speed is UX',
         body: 'Every 100ms of latency costs real users. Where data lives decides how fast your app feels.',
         accent: 'green',
       },
       {
-        icon: '💰',
+        icon: 'Coins',
         title: 'Cost is real',
         body: 'Bad architecture wastes money at scale. Good design keeps the cloud bill sane.',
         accent: 'red',

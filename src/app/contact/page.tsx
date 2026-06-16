@@ -13,7 +13,7 @@ export default function ContactPage() {
       <h2>Email</h2>
       <p>
         Reach us at{' '}
-        <a href="mailto:hello@Eyesome Tech.dev">hello@Eyesome Tech.dev</a>
+        <a href="mailto:okappeal@gmail.com">okappeal@gmail.com</a>
       </p>
 
       <h2>Response Time</h2>

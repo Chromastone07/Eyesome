@@ -1,4 +1,5 @@
 import { RecapSlide } from '@/lib/quickread-types'
+import { Check } from 'lucide-react'
 
 export default function RecapSlideView({ slide }: { slide: RecapSlide }) {
   return (
@@ -6,7 +7,7 @@ export default function RecapSlideView({ slide }: { slide: RecapSlide }) {
       <div className="flex min-h-full flex-col items-center justify-between gap-3 p-[6%] text-center sm:p-[7%]">
         <div className="flex w-full flex-1 flex-col items-center justify-center gap-3">
           <div className="flex h-[clamp(40px,11vw,54px)] w-[clamp(40px,11vw,54px)] items-center justify-center rounded-full bg-white/10 font-heading text-[clamp(18px,5vw,26px)] text-accent-yellow">
-            ✓
+            <Check className="h-[0.8em] w-[0.8em]" strokeWidth={3} />
           </div>
           <h2 className="font-heading text-[clamp(20px,6.5vw,30px)] font-bold leading-tight text-white">
             {slide.heading}
@@ -18,8 +19,8 @@ export default function RecapSlideView({ slide }: { slide: RecapSlide }) {
                 key={i}
                 className="flex items-center gap-2 rounded-md bg-white/10 px-[4%] py-[2.5%] text-left shadow-sm"
               >
-                <span className="flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-accent-green text-[10px] font-bold text-white">
-                  ✓
+                <span className="flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-full bg-accent-green font-bold text-white">
+                  <Check className="h-3 w-3" strokeWidth={3} />
                 </span>
                 <span className="font-heading text-[clamp(12px,3.2vw,15px)] font-semibold text-white">
                   {item}

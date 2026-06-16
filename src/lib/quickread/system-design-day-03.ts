@@ -14,13 +14,13 @@ const day03: Slide[] = [
     heading: 'One server is a single point of failure',
     cards: [
       {
-        icon: '💥',
+        icon: 'Zap',
         title: 'It crashes, you\'re done',
         body: 'If every request goes to one machine, that machine dying takes your whole app down with it.',
         accent: 'red',
       },
       {
-        icon: '🚦',
+        icon: 'AlertCircle',
         title: 'It chokes under load',
         body: 'One server can only handle so many requests per second before response times blow up.',
         accent: 'yellow',
@@ -33,13 +33,13 @@ const day03: Slide[] = [
     heading: 'More servers create a new problem',
     cards: [
       {
-        icon: '🤔',
+        icon: 'HelpCircle',
         title: 'Which server gets the request?',
         body: 'Once you have multiple servers, something has to decide where each incoming request goes.',
         accent: 'blue',
       },
       {
-        icon: '⚖️',
+        icon: 'Scale',
         title: 'Spread the work evenly',
         body: 'Without a director, one server can get slammed while others sit idle   that\'s wasted capacity.',
         accent: 'green',

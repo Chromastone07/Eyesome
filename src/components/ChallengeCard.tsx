@@ -1,6 +1,13 @@
 import Link from 'next/link'
 import { ChallengeMeta, getChallengeDays } from '@/lib/content'
 import ChallengeProgress from './ChallengeProgress'
+import { Puzzle, Palette, Layers, Folder } from 'lucide-react'
+
+const iconMap: Record<string, React.ReactNode> = {
+  Puzzle: <Puzzle className="h-8 w-8" />,
+  Palette: <Palette className="h-8 w-8" />,
+  Layers: <Layers className="h-8 w-8" />,
+}
 
 const accentMap = {
   yellow: {
@@ -45,7 +52,7 @@ export default function ChallengeCard({ challenge }: { challenge: ChallengeMeta 
       className={`group block rounded-xl border bg-surface p-5 transition-colors sm:p-6 ${accent.border}`}
     >
       <div className="flex items-start justify-between gap-3">
-        <span className="text-3xl">{challenge.icon}</span>
+        <span className={`text-3xl ${accent.text}`}>{iconMap[challenge.icon] || <Folder className="h-8 w-8" />}</span>
         <span className="max-w-[40%] text-right font-body text-xs uppercase tracking-wider text-muted-light">
           {challenge.level}
         </span>

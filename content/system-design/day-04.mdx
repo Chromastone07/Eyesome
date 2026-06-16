@@ -1,0 +1,61 @@
+---
+title: "Caching Strategies"
+topic: "Redis & Memcached"
+---
+
+Databases are built for durability (saving data safely to disk), not pure speed. If millions of users request the exact same piece of data (like the front page of YouTube or the price of Bitcoin), asking the database to read from disk every single time will cause the system to choke.
+
+The solution is **Caching**: storing frequently accessed data in memory (RAM) instead of on disk. RAM is orders of magnitude faster than a hard drive or SSD.
+
+### How Caching Works
+
+A cache sits between your application server and your database.
+
+<Analogy>
+  Imagine a librarian (the server) fetching a book for you. Walking to the basement archives to get the book takes 10 minutes (Database query). But if 100 people ask for the same popular book today, the librarian keeps a copy on their desk (Cache). Fetching it from the desk takes 2 seconds.
+</Analogy>
+
+### The Read-Through Cache
+
+The most common caching pattern works like this:
+
+1. The application receives a request.
+2. It checks the cache first (e.g., Redis).
+3. If the data is there (**Cache Hit**), it returns it immediately.
+4. If the data is missing (**Cache Miss**), it queries the slow Database.
+5. It then writes the result to the cache so the next request is fast, and finally returns the data to the user.
+
+```javascript
+// Pseudo-code for a Read-Through Cache
+async function getUserProfile(userId) {
+  // 1. Check cache
+  const cachedProfile = await redis.get(`user:${userId}`);
+  if (cachedProfile) {
+    return JSON.parse(cachedProfile); // Cache Hit! Super fast.
+  }
+
+  // 2. Cache miss. Fetch from DB.
+  const dbProfile = await db.query('SELECT * FROM users WHERE id = ?', [userId]);
+
+  // 3. Save to cache for next time, with an expiration (TTL)
+  await redis.setex(`user:${userId}`, 3600, JSON.stringify(dbProfile)); 
+
+  return dbProfile;
+}
+```
+
+<Mistake>
+  Never cache data forever without an expiration. This is called the Time-To-Live (TTL). If you don't set a TTL, your cache will eventually run out of RAM and crash. Always let old, unused data expire.
+</Mistake>
+
+### Cache Eviction Policies
+
+When your cache fills up completely, what does it delete to make room for new data?
+
+- **LRU (Least Recently Used):** Discard the data that hasn't been requested in the longest amount of time. This is the most common and effective strategy.
+- **LFU (Least Frequently Used):** Discard the data that gets requested the least amount of times overall.
+- **FIFO (First In, First Out):** Discard the oldest data in the cache, regardless of how popular it is.
+
+<Trivia>
+  Redis stands for "Remote Dictionary Server". It stores everything as Key-Value pairs, just like a massive JavaScript object or Python dictionary sitting in RAM!
+</Trivia>

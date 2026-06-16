@@ -1,7 +1,22 @@
 import { notFound } from 'next/navigation'
-import type { Metadata } from 'next'
 import { getAllChallenges, getChallenge, getChallengeDays } from '@/lib/content'
+import type { Metadata } from 'next'
 import DayRow from '@/components/DayRow'
+import { Puzzle, Palette, Layers, Folder } from 'lucide-react'
+
+const iconMap: Record<string, React.ReactNode> = {
+  Puzzle: <Puzzle className="h-10 w-10" />,
+  Palette: <Palette className="h-10 w-10" />,
+  Layers: <Layers className="h-10 w-10" />,
+}
+
+const textAccentMap: Record<string, string> = {
+  yellow: 'text-accent-yellow',
+  blue: 'text-accent-blue',
+  green: 'text-accent-green',
+  red: 'text-accent-red',
+  purple: 'text-accent-purple',
+}
 
 export function generateStaticParams() {
   return getAllChallenges().map((c) => ({ challenge: c.slug }))
@@ -33,7 +48,9 @@ export default function ChallengePage({
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
       <div className="mb-10">
-        <span className="text-4xl">{challenge.icon}</span>
+        <div className={`mb-4 inline-flex ${textAccentMap[challenge.accent] || 'text-ink'}`}>
+          {iconMap[challenge.icon] || <Folder className="h-10 w-10" />}
+        </div>
         <h1 className="mt-3 font-heading text-4xl font-bold text-ink sm:text-5xl">
           {challenge.title}
         </h1>

@@ -1,6 +1,7 @@
 import { CardsSlide } from '@/lib/quickread-types'
 import { accentBorderClass } from './helpers'
 import { renderHeading } from './helpers'
+import * as LucideIcons from 'lucide-react'
 
 export default function CardsSlideView({ slide }: { slide: CardsSlide }) {
   return (
@@ -26,8 +27,11 @@ export default function CardsSlideView({ slide }: { slide: CardsSlide }) {
               }`}
             >
               {card.icon && (
-                <div className="text-[clamp(18px,5vw,24px)] leading-none">
-                  {card.icon}
+                <div className="text-[clamp(18px,5vw,24px)] leading-none text-white">
+                  {(() => {
+                    const IconComponent = (LucideIcons as any)[card.icon]
+                    return IconComponent ? <IconComponent className="h-[1.2em] w-[1.2em]" /> : card.icon
+                  })()}
                 </div>
               )}
               <div className="font-heading text-[clamp(15px,4.5vw,19px)] font-bold text-white">

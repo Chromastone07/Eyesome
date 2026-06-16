@@ -15,7 +15,7 @@ const dsaDay01: Slide[] = [
     heading: 'Nested loops are too slow',
     cards: [
       {
-        icon: '🐢',
+        icon: 'Turtle',
         title: 'O(N²) is a trap',
         body: 'Checking every single subarray combination with a nested loop works, but it will cause a Time Limit Exceeded error in interviews.',
         accent: 'red',
@@ -28,7 +28,7 @@ const dsaDay01: Slide[] = [
     heading: 'Slide, don\'t recalculate',
     cards: [
       {
-        icon: '🚂',
+        icon: 'Train',
         title: 'Like a moving train',
         body: 'Instead of recalculating from scratch, slide the window forward: remove what left the window, add what entered. Boom. O(N) time.',
         accent: 'blue',
