@@ -1,5 +1,6 @@
 import { getAllChallenges } from '@/lib/content'
 import ChallengeCard from '@/components/ChallengeCard'
+import NewsletterSignup from '@/components/NewsletterSignup'
 
 export default function HomePage() {
   const challenges = getAllChallenges()
@@ -29,6 +30,10 @@ export default function HomePage() {
             <ChallengeCard key={challenge.slug} challenge={challenge} />
           ))}
         </div>
+      </section>
+
+      <section className="mt-20 sm:mt-24">
+        <NewsletterSignup />
       </section>
     </div>
   )
