@@ -3,9 +3,9 @@ import { renderHighlighted } from './helpers'
 
 export default function CompareSlideView({ slide }: { slide: CompareSlide }) {
   return (
-    <div className="h-full overflow-y-auto bg-ink">
+    <div className="h-full overflow-y-auto bg-[#1a1f3a]">
       <div className="flex min-h-full flex-col gap-3 p-[6%] sm:p-[7%]">
-        <div className="font-heading text-[clamp(9px,2.2vw,12px)] uppercase tracking-[0.2em] text-white/35">
+        <div className="font-heading text-[clamp(9px,2.2vw,12px)] uppercase tracking-[0.2em] text-white/50">
           {slide.eyebrow}
         </div>
         <h2 className="font-heading text-[clamp(20px,6.5vw,30px)] font-bold leading-tight text-white">
@@ -27,7 +27,7 @@ export default function CompareSlideView({ slide }: { slide: CompareSlide }) {
                 <div className="font-heading text-[clamp(13px,3.8vw,17px)] font-bold text-accent-blue">
                   {pair.left.label}
                 </div>
-                <div className="font-body text-[clamp(9.5px,2.4vw,11px)] leading-snug text-white/50">
+                <div className="font-body text-[clamp(9.5px,2.4vw,11px)] leading-snug text-white/70">
                   {pair.left.desc}
                 </div>
               </div>
@@ -40,7 +40,7 @@ export default function CompareSlideView({ slide }: { slide: CompareSlide }) {
                 <div className="font-heading text-[clamp(13px,3.8vw,17px)] font-bold text-accent-red">
                   {pair.right.label}
                 </div>
-                <div className="font-body text-[clamp(9.5px,2.4vw,11px)] leading-snug text-white/50">
+                <div className="font-body text-[clamp(9.5px,2.4vw,11px)] leading-snug text-white/70">
                   {pair.right.desc}
                 </div>
               </div>
@@ -50,7 +50,7 @@ export default function CompareSlideView({ slide }: { slide: CompareSlide }) {
 
         {slide.quote && (
           <div className="rounded-lg border-l-4 border-accent-yellow bg-black/20 p-[4%]">
-            <p className="font-heading text-[clamp(13px,3.8vw,17px)] leading-relaxed text-white/70">
+            <p className="font-heading text-[clamp(13px,3.8vw,17px)] leading-relaxed text-white/80">
               {renderHighlighted(slide.quote, 'text-accent-yellow')}
             </p>
           </div>

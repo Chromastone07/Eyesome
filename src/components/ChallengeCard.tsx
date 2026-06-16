@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ChallengeMeta, getChallengeDays } from '@/lib/content'
+import ChallengeProgress from './ChallengeProgress'
 
 const accentMap = {
   yellow: {
@@ -50,7 +51,7 @@ export default function ChallengeCard({ challenge }: { challenge: ChallengeMeta 
         </span>
       </div>
 
-      <h3 className="mt-4 font-heading text-2xl font-bold text-white">
+      <h3 className="mt-4 font-heading text-2xl font-bold text-ink">
         {challenge.title}
       </h3>
 
@@ -58,19 +59,12 @@ export default function ChallengeCard({ challenge }: { challenge: ChallengeMeta 
         {challenge.description}
       </p>
 
-      <div className="mt-5">
-        <div className="mb-1 flex justify-between font-body text-xs text-muted-light">
-          <span>
-            {availableDays}/{challenge.totalDays} days available
-          </span>
-        </div>
-        <div className="h-2 w-full overflow-hidden rounded-full bg-bg">
-          <div
-            className={`h-full rounded-full ${accent.bar}`}
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-      </div>
+      <ChallengeProgress
+        challengeSlug={challenge.slug}
+        totalDays={challenge.totalDays}
+        availableDays={availableDays}
+        accentBarClass={accent.bar}
+      />
 
       <div
         className={`mt-5 inline-flex items-center gap-1 font-body text-sm font-semibold ${accent.text}`}

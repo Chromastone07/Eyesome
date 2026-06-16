@@ -18,7 +18,7 @@ export default function DayRow({
         {String(day.day).padStart(2, '0')}
       </span>
       <div className="min-w-0 flex-1">
-        <div className="font-heading text-base font-bold text-white sm:text-lg">
+        <div className="font-heading text-base font-bold text-ink sm:text-lg">
           {day.title}
         </div>
         {day.topic && (

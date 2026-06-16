@@ -21,7 +21,7 @@ export default function VSCard({
       </div>
 
       <div className="flex flex-shrink-0 items-center justify-center">
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ink font-heading text-xs font-bold text-accent-yellow">
+        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#1a1f3a] font-heading text-xs font-bold text-accent-yellow shadow-sm">
           VS
         </span>
       </div>

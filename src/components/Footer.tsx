@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-12">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
           <div>
-            <div className="font-heading text-2xl font-bold text-white">
+            <div className="font-heading text-2xl font-bold text-ink">
               Eyesome <span className="text-accent-yellow">Tech</span>
             </div>
             <p className="mt-2 max-w-xs font-body text-sm text-muted-light">
@@ -15,7 +15,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <div className="mb-3 font-heading text-lg font-bold text-white">
+            <div className="mb-3 font-heading text-lg font-bold text-ink">
               Learn
             </div>
             <ul className="flex flex-col gap-2 font-body text-sm text-muted-light">
@@ -33,7 +33,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <div className="mb-3 font-heading text-lg font-bold text-white">
+            <div className="mb-3 font-heading text-lg font-bold text-ink">
               Legal
             </div>
             <ul className="flex flex-col gap-2 font-body text-sm text-muted-light">

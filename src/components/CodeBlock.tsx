@@ -1,5 +1,6 @@
 import { HTMLAttributes, isValidElement } from 'react'
 import MermaidDiagram from './MermaidDiagram'
+import LiveCode from './LiveCode'
 
 interface CodeChildProps {
   className?: string
@@ -11,7 +12,7 @@ export default function CodeBlock(props: HTMLAttributes<HTMLPreElement>) {
 
   if (!isValidElement(child)) {
     return (
-      <pre className="not-prose my-6 overflow-x-auto rounded-lg bg-ink p-4">
+      <pre className="not-prose my-6 overflow-x-auto rounded-lg bg-[#1a1f3a] p-4">
         {props.children}
       </pre>
     )
@@ -25,8 +26,12 @@ export default function CodeBlock(props: HTMLAttributes<HTMLPreElement>) {
     return <MermaidDiagram chart={code} />
   }
 
+  if (language === 'jsx-live' || language === 'react-live') {
+    return <LiveCode code={code} />
+  }
+
   return (
-    <pre className="not-prose my-6 overflow-x-auto rounded-lg bg-ink p-4">
+    <pre className="not-prose my-6 overflow-x-auto rounded-lg bg-[#1a1f3a] p-4">
       <code
         className={`font-mono text-[13px] leading-relaxed text-white/90 ${
           className ?? ''

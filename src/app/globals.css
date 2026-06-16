@@ -4,24 +4,46 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --bg: #fafbfd;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --paper: #fafbfd;
+    --ink: #1a1f3a;
+    --muted-light: #64748b;
+  }
+  .dark {
+    --bg: #0f1117;
+    --surface: #1a1f2e;
+    --border: #2a3050;
+    --paper: #0f1117;
+    --ink: #f0f0f0;
+    --muted-light: #8892b0;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #0f1117;
-  color: #f0f0f0;
   font-family: 'Inter', sans-serif;
 }
 
-/* Lined-paper texture for article pages */
-/* Clean reading background for article and legal pages */
+/* Lined-paper texture for article pages (only in light mode) */
 .paper-bg {
-  background-color: #fafbfd;
+  background-color: var(--paper);
+}
+
+:root:not(.dark) .paper-bg {
   background-image:
     radial-gradient(circle at 100% 0%, rgba(58, 174, 224, 0.07) 0%, transparent 45%),
     radial-gradient(circle at 0% 100%, rgba(253, 233, 104, 0.05) 0%, transparent 40%);
   background-attachment: local;
+}
+
+.paper-bg {
   min-height: 100%;
 }
 
@@ -45,4 +67,14 @@ a:focus-visible,
 button:focus-visible {
   outline: 2px solid #fde968;
   outline-offset: 2px;
+}
+
+/* Focus Mode */
+body.focus-mode header,
+body.focus-mode footer {
+  display: none !important;
+}
+
+body.focus-mode main {
+  padding-top: 1rem;
 }

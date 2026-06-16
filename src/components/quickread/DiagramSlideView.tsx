@@ -3,12 +3,12 @@ import { accentColors } from './helpers'
 
 export default function DiagramSlideView({ slide }: { slide: DiagramSlide }) {
   return (
-    <div className="h-full overflow-y-auto bg-ink">
+    <div className="h-full overflow-y-auto bg-[#1a1f3a]">
       <div className="flex min-h-full flex-col gap-2 p-[6%] sm:p-[7%]">
-        <div className="font-heading text-[clamp(9px,2.2vw,12px)] uppercase tracking-[0.2em] text-white/35">
+        <div className="font-heading text-[clamp(9px,2.2vw,12px)] uppercase tracking-[0.2em] text-white/50">
           {slide.eyebrow}
         </div>
-        <h2 className="font-heading text-[clamp(20px,6.5vw,30px)] font-bold text-accent-yellow">
+        <h2 className="font-heading text-[clamp(20px,6.5vw,30px)] font-bold leading-tight text-white">
           {slide.heading}
         </h2>
 
@@ -33,13 +33,13 @@ export default function DiagramSlideView({ slide }: { slide: DiagramSlide }) {
                           {node.label}
                         </div>
                         {node.sublabel && (
-                          <div className="font-heading text-[clamp(8px,2vw,10.5px)] text-white/40">
+                          <div className="font-heading text-[clamp(8px,2vw,10.5px)] text-white/60">
                             {node.sublabel}
                           </div>
                         )}
                       </div>
                       {j < row.nodes.length - 1 && (
-                        <span className="font-heading text-[clamp(14px,4vw,20px)] text-white/25">
+                        <span className="font-heading text-[clamp(14px,4vw,20px)] text-white/40">
                           →
                         </span>
                       )}
@@ -48,7 +48,7 @@ export default function DiagramSlideView({ slide }: { slide: DiagramSlide }) {
                 })}
               </div>
               {i < slide.rows.length - 1 && slide.rowConnector !== 'none' && (
-                <span className="font-heading text-[clamp(14px,4vw,20px)] text-white/25">
+                <span className="font-heading text-[clamp(14px,4vw,20px)] text-white/40">
                   ↓
                 </span>
               )}
@@ -56,7 +56,7 @@ export default function DiagramSlideView({ slide }: { slide: DiagramSlide }) {
           ))}
 
           {slide.note && (
-            <div className="mt-1 text-center font-heading text-[clamp(10px,2.6vw,12px)] text-white/35">
+            <div className="mt-1 text-center font-heading text-[clamp(10px,2.6vw,12px)] text-white/50">
               {slide.note}
             </div>
           )}

@@ -83,7 +83,7 @@ export default function QuickRead({ slides }: { slides: Slide[] }) {
           onClick={() => go(current - 1)}
           disabled={current === 0}
           aria-label="Previous slide"
-          className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-border bg-surface text-lg text-white transition-colors hover:border-accent-yellow/50 disabled:opacity-20"
+          className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-[#1a1f3a]/20 bg-[#1a1f3a] text-lg text-white transition-colors hover:border-accent-yellow/50 disabled:opacity-20"
         >
           ‹
         </button>
@@ -107,7 +107,7 @@ export default function QuickRead({ slides }: { slides: Slide[] }) {
           onClick={() => go(current + 1)}
           disabled={current === total - 1}
           aria-label="Next slide"
-          className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-border bg-surface text-lg text-white transition-colors hover:border-accent-yellow/50 disabled:opacity-20"
+          className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-[#1a1f3a]/20 bg-[#1a1f3a] text-lg text-white transition-colors hover:border-accent-yellow/50 disabled:opacity-20"
         >
           ›
         </button>

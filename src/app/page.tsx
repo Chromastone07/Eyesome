@@ -10,7 +10,7 @@ export default function HomePage() {
         <span className="font-heading text-sm uppercase tracking-[0.2em] text-accent-yellow">
           Structured learning, daily
         </span>
-        <h1 className="mt-3 font-heading text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl">
+        <h1 className="mt-3 font-heading text-4xl font-bold leading-tight text-ink sm:text-5xl md:text-6xl">
           Learn anything in{' '}
           <span className="text-accent-yellow">30 days</span>
         </h1>
@@ -21,7 +21,7 @@ export default function HomePage() {
       </section>
 
       <section id="challenges">
-        <h2 className="mb-6 font-heading text-2xl font-bold text-white">
+        <h2 className="mb-6 font-heading text-2xl font-bold text-ink">
           All Challenges
         </h2>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">

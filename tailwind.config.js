@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
     './content/**/*.{md,mdx}',
@@ -7,14 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Dark / navigation pages
-        bg: '#0f1117',
-        surface: '#1a1f2e',
-        border: '#2a3050',
-        // Article / paper pages
-        paper: '#fafbfd',
-        ink: '#1a1f3a',
-        // Accents (match slide deck palette)
+        bg: 'var(--bg)',
+        surface: 'var(--surface)',
+        border: 'var(--border)',
+        paper: 'var(--paper)',
+        ink: 'var(--ink)',
         accent: {
           yellow: '#fde968',
           blue: '#3aaee0',
@@ -23,7 +21,7 @@ module.exports = {
           purple: '#b06ae8',
         },
         muted: {
-          light: '#8892b0',
+          light: 'var(--muted-light)',
           dark: '#9a8f7a',
         },
       },

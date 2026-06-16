@@ -4,6 +4,8 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CookieBanner from '@/components/CookieBanner'
 
+import { ThemeProvider } from '@/components/ThemeProvider'
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://eyesome-tech.vercel.app'),
   title: 'Eyesome Tech   Learn Anything in 30 Days',
@@ -17,12 +19,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className="flex min-h-screen flex-col">
-        <Navbar />
-        <main className="flex flex-1 flex-col">{children}</main>
-        <Footer />
-        <CookieBanner />
+    <html lang="en" suppressHydrationWarning>
+      <body className="flex min-h-screen flex-col bg-bg text-ink transition-colors duration-300">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <Navbar />
+          <main className="flex flex-1 flex-col">{children}</main>
+          <Footer />
+          <CookieBanner />
+        </ThemeProvider>
       </body>
     </html>
   )

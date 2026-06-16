@@ -3,7 +3,7 @@ import { renderHeading } from './helpers'
 
 export default function TitleSlideView({ slide }: { slide: TitleSlide }) {
   return (
-    <div className="relative h-full overflow-hidden bg-ink">
+    <div className="relative h-full overflow-hidden bg-[#1a1f3a]">
       {/* glow blobs */}
       <div
         className="pointer-events-none absolute -right-1/5 -top-1/5 aspect-square w-2/3 rounded-full"
@@ -34,7 +34,7 @@ export default function TitleSlideView({ slide }: { slide: TitleSlide }) {
           <h1 className="font-heading text-[clamp(32px,11vw,56px)] font-bold leading-[1.05] text-white">
             {renderHeading(slide.heading, slide.highlight, 'text-accent-yellow')}
           </h1>
-          <p className="mt-3 max-w-[90%] font-body text-[clamp(12px,3.2vw,14.5px)] leading-relaxed text-white/55">
+          <p className="mt-3 max-w-[90%] font-body text-[clamp(12px,3.2vw,14.5px)] leading-relaxed text-white/70">
             {slide.hook}
           </p>
         </div>

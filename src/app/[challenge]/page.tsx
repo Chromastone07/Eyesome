@@ -34,7 +34,7 @@ export default function ChallengePage({
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
       <div className="mb-10">
         <span className="text-4xl">{challenge.icon}</span>
-        <h1 className="mt-3 font-heading text-4xl font-bold text-white sm:text-5xl">
+        <h1 className="mt-3 font-heading text-4xl font-bold text-ink sm:text-5xl">
           {challenge.title}
         </h1>
         <p className="mt-3 max-w-xl font-body text-base leading-relaxed text-muted-light">

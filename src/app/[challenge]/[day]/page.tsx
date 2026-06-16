@@ -19,6 +19,9 @@ import Trivia from '@/components/Trivia'
 import Recap from '@/components/Recap'
 import VSCard from '@/components/VSCard'
 import CodeBlock from '@/components/CodeBlock'
+import MarkCompleteButton from '@/components/MarkCompleteButton'
+import FocusToggle from '@/components/FocusToggle'
+import BookmarkButton from '@/components/BookmarkButton'
 
 export function generateStaticParams() {
   const params: { challenge: string; day: string }[] = []
@@ -117,12 +120,26 @@ export default async function DayPage({
   return (
     <div className="paper-bg flex-1">
       <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-12">
-        <Link
-          href={`/${params.challenge}`}
-          className="font-body text-sm text-ink/60 hover:text-ink"
-        >
-          ← Back to {challenge.title}
-        </Link>
+        <div className="flex items-center justify-between">
+          <Link
+            href={`/${params.challenge}`}
+            className="font-body text-sm text-ink/60 hover:text-ink"
+          >
+            ← Back to {challenge.title}
+          </Link>
+          <div className="flex items-center gap-2">
+            <BookmarkButton
+              bookmark={{
+                id: `${params.challenge}-${params.day}`,
+                challengeSlug: params.challenge,
+                daySlug: params.day,
+                title: dayData.meta.title,
+                topic: dayData.meta.topic || challenge.title,
+              }}
+            />
+            <FocusToggle />
+          </div>
+        </div>
 
         <div className="mt-6">
           <span className="font-heading text-sm uppercase tracking-[0.2em] text-accent-blue">
@@ -152,6 +169,8 @@ export default async function DayPage({
         <article className="prose mt-8 max-w-none sm:prose-lg">
           {content}
         </article>
+
+        <MarkCompleteButton challengeSlug={params.challenge} daySlug={params.day} />
 
         <div className="mt-16 flex flex-col items-stretch gap-3 border-t border-ink/10 pt-8 sm:flex-row sm:justify-between sm:gap-4">
           {prev ? (
