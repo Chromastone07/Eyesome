@@ -29,6 +29,11 @@ export default function Footer() {
                   System Design
                 </Link>
               </li>
+              <li>
+                <Link href="/certificates" className="hover:text-accent-yellow">
+                  My Certificates
+                </Link>
+              </li>
             </ul>
           </div>
 

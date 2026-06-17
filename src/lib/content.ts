@@ -107,7 +107,7 @@ export function getDayContent(challengeSlug: string, daySlug: string) {
 
 /**
  * Returns the Quick Read slide data for a day, if registered.
- * See quickread-registry.ts — each day's slide data must be
+ * See quickread-registry.ts   each day's slide data must be
  * registered there for static bundling to work correctly.
  */
 export function getQuickRead(

@@ -17,7 +17,7 @@ const reactUiDay01: Slide[] = [
       {
         icon: 'BrickWall',
         title: 'Don\'t build monoliths',
-        body: 'You don\'t mold a whole spaceship from one piece of plastic. You build smaller pieces—a wing, an engine—and snap them together.',
+        body: 'You don\'t mold a whole spaceship from one piece of plastic. You build smaller pieces a wing, an engine and snap them together.',
         accent: 'purple',
       },
     ],

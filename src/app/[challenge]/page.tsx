@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { getAllChallenges, getChallenge, getChallengeDays } from '@/lib/content'
 import type { Metadata } from 'next'
 import DayRow from '@/components/DayRow'
+import ChallengeCompletion from '@/components/ChallengeCompletion'
 import { Puzzle, Palette, Layers, Folder } from 'lucide-react'
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -64,6 +65,12 @@ export default function ChallengePage({
           <DayRow key={day.slug} challengeSlug={params.challenge} day={day} />
         ))}
       </div>
+
+      <ChallengeCompletion 
+        challengeSlug={params.challenge} 
+        challengeTitle={challenge.title} 
+        totalDays={challenge.totalDays} 
+      />
     </div>
   )
 }

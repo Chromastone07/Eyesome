@@ -4,7 +4,7 @@ import SearchBar from './SearchBar'
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-bg/80 backdrop-blur transition-colors duration-300">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-bg/80 backdrop-blur transition-colors duration-300">
       <nav className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
         <Link
           href="/"
@@ -22,7 +22,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/bookmarks"
-            className="hidden font-body text-xs font-medium text-ink/70 transition-colors hover:text-ink sm:block sm:text-sm"
+            className="font-body text-xs font-medium text-ink/70 transition-colors hover:text-ink sm:text-sm"
           >
             Bookmarks
           </Link>

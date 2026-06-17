@@ -46,8 +46,8 @@ The smarter approach. The load balancer keeps track of how many active requests 
 <VSCard
   left="Round Robin"
   right="Least Connections"
-  leftDesc="Simple, predictable. Cycles through servers evenly — but ignores how busy each one actually is."
-  rightDesc="Sends traffic to whichever server has the fewest active connections — smarter under uneven load."
+  leftDesc="Simple, predictable. Cycles through servers evenly   but ignores how busy each one actually is."
+  rightDesc="Sends traffic to whichever server has the fewest active connections   smarter under uneven load."
 />
 
 ## How It Decides: Network Layers
@@ -73,7 +73,7 @@ The solution? **Run more than one load balancer.**
 
 In production systems at scale, you always run multiple load balancers in an "active-passive" or "active-active" setup. If the primary load balancer dies, DNS or a floating IP address automatically routes traffic to the backup load balancer.
 
-As the quote from the Quick Read goes: *"The fix for a single point of failure is never zero points — it's more points."*
+As the quote from the Quick Read goes: *"The fix for a single point of failure is never zero points   it's more points."*
 
 ## Putting It Together
 
@@ -87,7 +87,7 @@ Tomorrow, we'll look at the next major bottleneck in a growing system, and how t
   "Layer 4 routes by IP/port, Layer 7 reads the request",
   "Round Robin and Least Connections are common algorithms",
   "Health checks remove dead servers automatically",
-  "Run two+ load balancers — never just one"
+  "Run two+ load balancers   never just one"
 ]} />
 
 <Trivia>

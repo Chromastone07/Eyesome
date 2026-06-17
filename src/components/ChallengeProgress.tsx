@@ -29,7 +29,7 @@ export default function ChallengeProgress({
           {progressCount}/{totalDays} completed
         </span>
       </div>
-      <div className="h-2 w-full overflow-hidden rounded-full bg-border/40">
+      <div className="h-2 w-full overflow-hidden rounded-full bg-black/5 dark:bg-white/10">
         <div
           className={`h-full rounded-full transition-all duration-500 ease-out ${accentBarClass}`}
           style={{ width: `${Math.max(2, progressPercent)}%` }}

@@ -41,10 +41,6 @@ export default function ChallengeCard({ challenge }: { challenge: ChallengeMeta 
   const accent = accentMap[challenge.accent] ?? accentMap.yellow
   const days = getChallengeDays(challenge.slug)
   const availableDays = days.filter((d) => d.available).length
-  const progress = Math.max(
-    4,
-    Math.round((availableDays / challenge.totalDays) * 100)
-  )
 
   return (
     <Link

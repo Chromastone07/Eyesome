@@ -7,6 +7,7 @@ import reactUiDay01 from '@/lib/quickread/react-ui-day-01'
 import dsaDay02 from '@/lib/quickread/dsa-patterns-day-02'
 import reactUiDay02 from '@/lib/quickread/react-ui-day-02'
 import systemDesignDay04 from '@/lib/quickread/system-design-day-04'
+import systemDesignDay07 from '@/lib/quickread/system-design-day-07'
 /**
  * Registry of Quick Read slide decks, keyed by "<challenge-slug>/<day-slug>".
  *
@@ -19,9 +20,10 @@ export const quickReadRegistry: Record<string, Slide[]> = {
   'system-design/day-01': systemDesignDay01,
   'system-design/day-02': systemDesignDay02,
   'system-design/day-03': systemDesignDay03,
+  'system-design/day-04': systemDesignDay04,
+  'system-design/day-07': systemDesignDay07,
   'dsa-patterns/day-01': dsaDay01,
   'dsa-patterns/day-02': dsaDay02,
   'react-ui/day-01': reactUiDay01,
   'react-ui/day-02': reactUiDay02,
-  'system-design/day-04': systemDesignDay04,
 }

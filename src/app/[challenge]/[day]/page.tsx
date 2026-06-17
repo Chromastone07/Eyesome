@@ -22,6 +22,7 @@ import CodeBlock from '@/components/CodeBlock'
 import MarkCompleteButton from '@/components/MarkCompleteButton'
 import FocusToggle from '@/components/FocusToggle'
 import BookmarkButton from '@/components/BookmarkButton'
+import Quiz from '@/components/Quiz'
 
 export function generateStaticParams() {
   const params: { challenge: string; day: string }[] = []
@@ -104,6 +105,7 @@ export default async function DayPage({
       Recap,
       VSCard,
       pre: CodeBlock,
+      Quiz,
     },
     options: {
       mdxOptions: {
