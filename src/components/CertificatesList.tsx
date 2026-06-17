@@ -72,7 +72,7 @@ export default function CertificatesList({ challenges }: { challenges: Challenge
           No Certificates Yet
         </h3>
         <p className="mt-2 font-body text-sm text-muted-light">
-          You haven't completed any 30-day challenges yet. Once you complete all days in a challenge, your official certificate will appear here.
+          You haven&apos;t completed any 30-day challenges yet. Once you complete all days in a challenge, your official certificate will appear here.
         </p>
         <Link
           href="/"
