@@ -3,6 +3,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import CookieBanner from '@/components/CookieBanner'
+import { Analytics } from "@vercel/analytics/next"
 
 import { ThemeProvider } from '@/components/ThemeProvider'
 

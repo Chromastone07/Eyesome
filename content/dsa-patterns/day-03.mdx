@@ -1,0 +1,84 @@
+---
+title: "Fast & Slow Pointers"
+day: 3
+description: "Learn how to use the Tortoise and Hare algorithm to detect cycles in linked lists."
+---
+
+# Fast & Slow Pointers (Tortoise and Hare)
+
+If the Two Pointers technique is about moving from opposite ends, the **Fast & Slow Pointers** technique (also known as Floyd's Cycle-Finding Algorithm or the Tortoise and Hare) is about moving pointers at **different speeds**.
+
+This pattern is incredibly powerful when dealing with **Linked Lists** or cyclic arrays, especially when you need to find a loop or the midpoint of a structure.
+
+## The Core Idea
+
+Imagine two runners on a circular track. One runner is fast (sprints), and the other is slow (jogs). If the track is a straight line, the fast runner will simply finish the race and stop. But if the track has a loop, the fast runner will eventually lap the slow runner and they will meet at the exact same spot.
+
+In code:
+1. **Slow Pointer:** Moves one step at a time (`slow = slow.next`).
+2. **Fast Pointer:** Moves two steps at a time (`fast = fast.next.next`).
+
+If there is a cycle, the `fast` pointer will eventually catch up to the `slow` pointer. If there isn't a cycle, the `fast` pointer will simply reach the end of the list (`null`).
+
+## Identifying the Pattern
+
+You should immediately think of Fast & Slow pointers when you see:
+- Linked List questions asking to **detect a cycle**.
+- Linked List questions asking to find the **middle element**.
+- Problems that feel like they involve a sequence that repeats or loops indefinitely.
+
+## Finding the Middle of a Linked List
+
+Instead of iterating through the entire list to count the nodes, and then iterating *again* to find the middle (which requires two full passes), we can do it in one pass using this pattern.
+
+```javascript
+function findMiddle(head) {
+  let slow = head;
+  let fast = head;
+
+  // Fast moves twice as fast. When fast reaches the end, slow is at the midpoint!
+  while (fast !== null && fast.next !== null) {
+    slow = slow.next;        // moves 1 step
+    fast = fast.next.next;   // moves 2 steps
+  }
+
+  return slow;
+}
+```
+
+<Analogy 
+  title="The Midpoint Trick" 
+  description="If you drive at 50 mph and I drive at 100 mph on a straight highway, when I reach the finish line, you will be exactly halfway there. That is why the slow pointer perfectly lands on the middle node!"
+/>
+
+## Detecting a Cycle
+
+How do we know if a linked list loops back on itself? If it does, a standard `while(head !== null)` loop will run forever. 
+
+Instead, we use our two runners.
+
+```javascript
+function hasCycle(head) {
+  let slow = head;
+  let fast = head;
+
+  while (fast !== null && fast.next !== null) {
+    slow = slow.next;
+    fast = fast.next.next;
+
+    // If they meet, there is a cycle!
+    if (slow === fast) {
+      return true;
+    }
+  }
+
+  // Fast reached the end, so no cycle.
+  return false;
+}
+```
+
+## Wrapping Up
+
+The Fast & Slow Pointers technique is a brilliant optimization that saves you from having to use extra memory (like HashSets) to keep track of nodes you've already visited. 
+
+Practice these two core templates, and you'll be able to solve dozens of complex Linked List problems!

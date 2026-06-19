@@ -1,0 +1,82 @@
+---
+title: "State & Interactivity"
+day: 3
+description: "Bring your layouts to life by managing complex state and handling user events."
+---
+
+# State & Interactivity
+
+A beautiful layout is only half the battle. To build a true Web Application, your interfaces need to respond to the user. They need to remember things. They need **State**.
+
+In React, interactivity is driven by the `useState` hook and event handlers.
+
+## Understanding State
+
+State is simply data that changes over time, and when it changes, React automatically updates the UI to reflect the new data.
+
+```jsx
+import { useState } from 'react';
+
+export default function Counter() {
+  // Declare a state variable named "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+
+### The Rules of State
+
+1. **State is isolated and private:** If you render the `<Counter />` component twice, each will have its own independent `count`.
+2. **Do not mutate state directly:** Never do `count = count + 1`. Always use the setter function (`setCount`) so React knows that it needs to re-render the screen.
+
+## Handling Events
+
+In pure HTML, you might use lowercase event names like `onclick`. In React, events use camelCase, like `onClick`, `onChange`, and `onSubmit`.
+
+Instead of passing a string, you pass a function:
+
+```jsx
+<form onSubmit={handleSubmit}>
+  <input 
+    type="text" 
+    value={name} 
+    onChange={(e) => setName(e.target.value)} 
+  />
+</form>
+```
+
+<Analogy 
+  title="The Thermostat" 
+  description="Think of State like the temperature setting on your thermostat. When you press the up arrow (Event), you change the setting (State). The heater then turns on automatically to match that new setting (Re-render)."
+/>
+
+## Complex State
+
+While `useState` is great for simple strings and numbers, what happens when you need to store objects or arrays?
+
+Remember the golden rule: **Treat state as read-only.**
+
+If you have an array of items, you cannot push to it. You must create a *new* array:
+
+```jsx
+const [items, setItems] = useState(['Apple', 'Banana']);
+
+// WRONG: Mutates existing array. React won't re-render.
+items.push('Orange');
+setItems(items);
+
+// CORRECT: Creates a new array with the spread operator.
+setItems([...items, 'Orange']);
+```
+
+## Wrapping Up
+
+Mastering state is the key to unlocking React's power. It allows you to build dynamic, data-driven applications that respond instantly to user input. Practice building simple interactive widgets like accordions, tabs, and modals!
