@@ -1,0 +1,79 @@
+---
+title: "Framer Motion Basics"
+day: 4
+description: "Bring your application to life with spring physics, layout animations, and declarative gestures using Framer Motion."
+---
+
+# Framer Motion Basics
+
+CSS transitions are great for simple hovers, but when you want complex, orchestrated, physics-based animations, CSS quickly becomes a nightmare of keyframes and timing functions.
+
+Enter **Framer Motion**, the industry standard animation library for React.
+
+## The `motion` Component
+
+Framer Motion gives you special HTML elements called `motion` components. Instead of rendering a regular `<div />`, you render a `<motion.div />`.
+
+This unlocks several magical animation properties:
+
+```jsx
+import { motion } from 'framer-motion';
+
+export default function Box() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: "spring", stiffness: 100 }}
+      className="bg-accent-blue h-32 w-32 rounded-xl"
+    />
+  );
+}
+```
+
+### The Three Core Props
+
+1. **`initial`**: The starting state of the element before it mounts.
+2. **`animate`**: The final state you want the element to animate *to*.
+3. **`transition`**: How it gets there (duration, easing, or spring physics).
+
+## Spring Physics vs Tweens
+
+By default, CSS animations use "Tweens" (linear, ease-in, ease-out). They are based strictly on **Time**. 
+
+Framer Motion heavily encourages **Springs**. Springs are based on **Physics** (mass, stiffness, damping). 
+
+<Analogy 
+  title="The Rubber Band" 
+  description="If you pull a rubber band and let go, it snaps back and vibrates before settling. That's a spring. It feels natural and organic. A tween is like an elevator doors closing—robotic, constant, and strictly timed."
+/>
+
+## Gestures
+
+Framer Motion makes micro-interactions incredibly simple. You don't need to mess with complex CSS `:hover` states or JavaScript event listeners.
+
+```jsx
+<motion.button
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="bg-ink text-surface rounded-full px-6 py-2"
+>
+  Click Me
+</motion.button>
+```
+
+With just two props (`whileHover` and `whileTap`), you've created a button that organically expands when hovered and satisfyingly compresses when clicked.
+
+## Layout Animations
+
+Perhaps the most magical feature of Framer Motion is the `layout` prop. If you add `layout` to a motion component, it will automatically and smoothly animate to its new position if the surrounding layout changes (like if a list item is deleted or a flexbox re-orders).
+
+```jsx
+<motion.div layout>
+  {/* I will smoothly glide to my new position if CSS flex-direction changes! */}
+</motion.div>
+```
+
+## Wrapping Up
+
+Framer Motion takes your UI from looking like a standard website to feeling like a native, premium application. Start replacing your static `div`s with `motion.div`s and playing with `initial` and `animate` to see your UI come to life!

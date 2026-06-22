@@ -69,7 +69,7 @@ const dsaDay03: Slide[] = [
       'It requires O(1) space, saving you from using a HashSet.',
       'Check if fast and fast.next exist before moving the fast pointer.',
     ],
-    nextDay: { day: 4, title: 'Sliding Window Pattern' },
+    nextDay: { day: 4, title: 'Merge Intervals' },
   },
 ]
 

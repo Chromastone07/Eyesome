@@ -1,0 +1,49 @@
+---
+title: "The CAP Theorem"
+day: 6
+description: "Understand the fundamental trade-offs in distributed systems: Consistency, Availability, and Partition Tolerance."
+---
+
+# The CAP Theorem
+
+When you move from a single monolithic database to a distributed system (like we discussed in Database Sharding), you unlock massive scalability. However, you also introduce a new set of physical limitations.
+
+In 2000, computer scientist Eric Brewer formulated the **CAP Theorem**. It states that any distributed data store can only guarantee **two out of the following three** properties simultaneously.
+
+## The Three Properties
+
+### 1. Consistency (C)
+Every read receives the most recent write, or an error. If User A updates their profile picture, and User B instantly refreshes the page, User B *must* see the new picture. All nodes in the system see the exact same data at the same time.
+
+### 2. Availability (A)
+Every request receives a non-error response, without the guarantee that it contains the most recent write. If a database node goes down, the system remains operational and continues to serve data (even if that data might be slightly stale).
+
+### 3. Partition Tolerance (P)
+The system continues to operate despite an arbitrary number of messages being dropped or delayed by the network between nodes. In the real world, networks fail. Cables get cut, routers crash. A distributed system *must* tolerate these network partitions.
+
+## The Trade-off
+
+Because network partitions (P) are a physical reality of the universe that you cannot avoid, a distributed system **must** choose P. 
+
+Therefore, the CAP theorem really means: **When a network partition occurs, you have to choose between Consistency or Availability.**
+
+<Analogy 
+  title="The Two Bank Tellers" 
+  description="Imagine two bank tellers in different cities. The phone line between them (the network) is cut (Partition). If a customer asks Teller A for their balance, Teller A has two choices: Say 'I cannot answer right now because I can't sync with Teller B' (Choosing Consistency), or say 'Here is your balance as of 5 minutes ago' (Choosing Availability)."
+/>
+
+## CP vs AP Systems
+
+When designing your system, you must choose what happens when the network fails.
+
+**CP (Consistency and Partition Tolerance):**
+You prioritize absolute correctness. If nodes cannot sync, the system returns an error rather than serving stale data. 
+*Example:* Bank balances, Financial ledgers. You cannot allow someone to withdraw money if you aren't 100% sure of their balance.
+
+**AP (Availability and Partition Tolerance):**
+You prioritize the system staying online. If nodes cannot sync, the system serves the most recent data it has, even if it's outdated. Once the network is restored, the nodes sync up (this is called *Eventual Consistency*).
+*Example:* Instagram likes, Twitter feeds. It's perfectly fine if a user sees 99 likes instead of 100 for a few seconds. The site staying online is more important.
+
+## Wrapping Up
+
+The CAP theorem forces architects to stop chasing perfection. You cannot build a system that is 100% accurate, 100% online, and 100% distributed. You must look at your product requirements and explicitly choose whether your application is a CP system or an AP system!

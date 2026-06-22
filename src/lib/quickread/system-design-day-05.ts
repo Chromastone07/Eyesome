@@ -62,7 +62,7 @@ const systemDesignDay05: Slide[] = [
       'A Shard Key determines where data lives.',
       'Consistent Hashing prevents total data reshuffling when adding new servers.',
     ],
-    nextDay: { day: 6, title: 'Message Queues' },
+    nextDay: { day: 6, title: 'CAP Theorem' },
   },
 ]
 
