@@ -1,0 +1,79 @@
+---
+title: "Component Composition"
+day: 5
+description: "Stop passing down 20 props. Learn how to write flexible, reusable React components using children."
+---
+
+# Component Composition
+
+As your React application grows, you will inevitably encounter the "Prop Drilling" problem. You have a massive `<Card />` component, and you start adding props to it: `title`, `description`, `icon`, `buttonText`, `onButtonClick`, `imageSrc`, `isDarkTheme`.
+
+Before long, your `<Card />` component is 300 lines long, takes 25 props, and is a nightmare to maintain.
+
+The solution is **Component Composition**.
+
+## The Power of `children`
+
+Instead of creating a single monolithic component that tries to do everything via props, you create small, focused building blocks and let the developer compose them together using the `children` prop.
+
+The `children` prop is a special React prop that automatically contains whatever is passed *between* the opening and closing tags of your component.
+
+### The Bad Way (Prop heavy)
+
+```jsx
+// This is inflexible. What if I want the title to be an <h2> instead of an <h3>?
+<Card 
+  title="My Title" 
+  description="My description" 
+  buttonText="Click me" 
+/>
+```
+
+### The Good Way (Composition)
+
+```jsx
+export function Card({ children }) {
+  return <div className="border rounded-xl p-4">{children}</div>;
+}
+
+// Now the developer has total control!
+<Card>
+  <h2>My Title</h2>
+  <p>My description</p>
+  <button>Click me</button>
+</Card>
+```
+
+<Analogy 
+  title="The Lego Set" 
+  description="A prop-heavy component is like a glued-together toy car. It does one thing, and you can't change it. Component composition is like Lego bricks. You provide the foundation, and the developer can build whatever they want inside of it."
+/>
+
+## Advanced Composition (Multiple Slots)
+
+Sometimes `children` isn't enough, because you want things to go into specific places (like a Header and a Footer). You can pass actual React elements as standard props!
+
+```jsx
+function Modal({ header, content, footer }) {
+  return (
+    <div className="modal">
+      <header className="border-b">{header}</header>
+      <main className="p-4">{content}</main>
+      <footer className="bg-gray-100">{footer}</footer>
+    </div>
+  );
+}
+
+// Usage:
+<Modal 
+  header={<h1>Warning</h1>} 
+  content={<p>Are you sure?</p>}
+  footer={<Button>Confirm</Button>}
+/>
+```
+
+## Wrapping Up
+
+When you find yourself adding an `if (props.showSubtitle)` statement to a component, stop. Ask yourself if you could instead use Component Composition. 
+
+Building UIs through composition makes your codebase drastically more flexible, easier to read, and prevents components from becoming bloated monsters!

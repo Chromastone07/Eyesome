@@ -1,0 +1,65 @@
+---
+title: "Weekly Checkpoint"
+day: 7
+description: "Test your retention of Week 1 concepts: Load Balancing, Caching, Sharding, and the CAP Theorem."
+---
+
+# Weekly Checkpoint
+
+Congratulations on making it to the end of Week 1 of the System Design track! 
+
+So far, you have learned how to scale a system from a single machine to a globally distributed architecture. You've learned how to distribute traffic, speed up reads, split up massive databases, and buffer heavy tasks.
+
+Before we move on to Week 2, it's time to pause and test your retention.
+
+## The Illusion of Competence
+
+Reading a technical article makes you *feel* like you learned something. But if you don't actively retrieve that information from your brain, you will forget it within 48 hours. This is called the "Illusion of Competence."
+
+To actually build strong neural pathways, you must practice **Active Recall**.
+
+## Instructions
+
+Below, you will find a short quiz covering the most important concepts from the last 6 days. 
+
+Take your time. If you get a question wrong, the quiz will explain why. If you find yourself struggling with a specific concept, don't just guess—go back and re-read the specific day's lesson!
+
+You must pass this quiz to officially complete Week 1. Good luck!
+
+<Quiz 
+  questions={[
+    {
+      question: "Which of the following is the best use case for a Message Queue?",
+      options: [
+        "Sending a password reset email after a user clicks a button.",
+        "Fetching a user's profile picture to display on their homepage.",
+        "Verifying that a user's password matches the database.",
+        "Storing a user's session token."
+      ],
+      correctIndex: 0,
+      explanation: "Message Queues are for asynchronous background tasks. Sending an email is a perfect example of a task that doesn't need to block the web server."
+    },
+    {
+      question: "According to the CAP Theorem, what must you choose between when a network partition occurs?",
+      options: [
+        "Consistency and Partition Tolerance",
+        "Availability and Partition Tolerance",
+        "Consistency and Availability",
+        "Speed and Accuracy"
+      ],
+      correctIndex: 2,
+      explanation: "Network partitions (P) are unavoidable physical realities. Therefore, when they happen, you must choose whether your system stays perfectly accurate (C) or stays online (A)."
+    },
+    {
+      question: "What is the primary danger of Hash-Based Database Sharding?",
+      options: [
+        "It is too slow to calculate the hash.",
+        "It creates 'Hot Shards' where one server gets all the traffic.",
+        "Adding or removing a server requires moving almost all the data to new servers.",
+        "It requires a massive amount of RAM."
+      ],
+      correctIndex: 2,
+      explanation: "If you shard by `hash(user) % 4`, and you add a 5th server, the math changes to `% 5`. This means almost every single user's hash will point to a different server than it did before, requiring a massive data migration."
+    }
+  ]}
+/>

@@ -1,0 +1,68 @@
+---
+title: "Cyclic Sort"
+day: 5
+description: "An incredibly fast pattern to use when dealing with arrays containing numbers in a given range."
+---
+
+# Cyclic Sort
+
+The **Cyclic Sort** pattern is a highly specialized, incredibly efficient algorithm used almost exclusively for one specific type of problem: finding missing or duplicate numbers in an array containing values in a given range (e.g., `1` to `N`).
+
+## The Core Concept
+
+Imagine you have an array of length `N` that is supposed to contain all numbers from `1` to `N` exactly once. If the array is sorted, the number `1` should be at index `0`, the number `2` should be at index `1`, and so on.
+
+The fundamental rule of Cyclic Sort is:
+**A number `x` belongs at index `x - 1`.**
+
+Because we know exactly where every number *should* go, we don't need to do an `O(N log N)` `Array.sort()`. We can just iterate through the array, and if a number isn't sitting at its correct index, we swap it to its correct index!
+
+<Analogy 
+  title="The Seating Chart" 
+  description="Imagine a classroom where 5 students are assigned seats 1 through 5. They walk in and sit randomly. The teacher walks to seat 1, looks at the student's ticket, and tells them to go to their correct seat, swapping with whoever is there. The teacher repeats this until everyone is in the right chair."
+/>
+
+## The Algorithm
+
+Here is how we implement it to find a missing number:
+
+```javascript
+function findMissingNumber(nums) {
+  let i = 0;
+  
+  // 1. Sort the array in O(N) time
+  while (i < nums.length) {
+    const correctIndex = nums[i]; // If the array is 0 to N
+    
+    // If the number is within bounds and not at its correct index, swap it
+    if (nums[i] < nums.length && nums[i] !== nums[correctIndex]) {
+      // Swap nums[i] and nums[correctIndex]
+      const temp = nums[i];
+      nums[i] = nums[correctIndex];
+      nums[temp] = temp;
+    } else {
+      // It's either out of bounds, or already correct. Move on.
+      i++;
+    }
+  }
+
+  // 2. Find the missing number
+  for (let j = 0; j < nums.length; j++) {
+    if (nums[j] !== j) {
+      return j; // The index itself is the missing number!
+    }
+  }
+
+  return nums.length;
+}
+```
+
+## Why it works in O(N)
+
+You might look at the `while` loop and think, "Wait, what if we swap and the new number *also* belongs somewhere else? Won't this take O(N²)?". 
+
+No! Every single swap strictly places one number into its final, perfectly correct position. Since there are `N` numbers, the absolute maximum number of swaps we can ever perform is `N`. Therefore, the time complexity is universally bounded by `O(N)`.
+
+## Wrapping Up
+
+Whenever a problem explicitly mentions "an array containing numbers in the range `1` to `N`" or `0` to `N`, your brain should immediately yell **Cyclic Sort**. It's a magical O(N) sorting trick that completely bypasses traditional sorting limitations!
