@@ -1,0 +1,57 @@
+---
+title: "Deep Dive into System Components"
+day: 8
+description: "A comprehensive look at the fundamental building blocks that make up modern distributed architectures."
+---
+
+# Deep Dive into System Components
+
+Welcome to Week 2!
+
+In Week 1, we covered high-level scalability concepts: Load Balancing, Caching, Sharding, and Message Queues. But what actually runs on all these servers? 
+
+Before we start architecting complex clones like Uber or Netflix, we need to do a deep dive into the specific internal components that make up a system's core infrastructure.
+
+## The Web Server (Reverse Proxy)
+
+When a user's request hits your backend, it doesn't go straight to your Node.js or Python code. It hits a **Reverse Proxy** first.
+
+Software like **Nginx** or **HAProxy** sits at the absolute front of your network. Its job is to:
+1. Terminate SSL (decrypt HTTPS traffic).
+2. Serve static files (HTML, CSS, Images) instantly without bothering your application code.
+3. Act as an API Gateway, routing `/api/users` to Server A and `/api/payments` to Server B.
+
+## The Application Server
+
+This is where your actual code runs. It is typically completely stateless.
+
+If you are using Node.js, your application server runs the Express framework. If you are using Python, it runs Django or FastAPI. 
+
+Because it is stateless, you can spin up 100 identical Application Servers and put them behind a Load Balancer, and they will all behave exactly the same way.
+
+## The Data Layer
+
+The data layer is almost never just a single database. A mature system uses the right database for the right job:
+
+### 1. Relational Database (RDBMS)
+*Examples: PostgreSQL, MySQL*
+Used for structured, highly relational data where absolute correctness (ACID transactions) is required. (e.g., User accounts, Financial transactions).
+
+### 2. NoSQL Document Store
+*Examples: MongoDB, DynamoDB*
+Used for unstructured or rapidly changing data schemas where you need to scale massively and quickly. (e.g., User profiles, Product catalogs).
+
+### 3. Key-Value Cache
+*Examples: Redis, Memcached*
+An entirely in-memory store used to save the results of expensive database queries for lightning-fast subsequent reads.
+
+### 4. Search Engine
+*Examples: Elasticsearch, Algolia*
+Relational databases are terrible at full-text search (like searching for a misspelled name). You pipe your database data into a Search Engine component, which builds complex inverted indexes for instant, fuzzy search results.
+
+## Wrapping Up
+
+When you are asked to design a system in an interview, you cannot just draw a box that says "Server" and a box that says "Database". 
+
+You must break it down into these specific components: The Reverse Proxy handling traffic, the stateless App Servers running business logic, the Relational DB for core data, the Cache for speed, and the Search Engine for discovery.
+

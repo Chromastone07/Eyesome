@@ -1,0 +1,105 @@
+---
+title: "Context API for Theming"
+day: 6
+description: "Manage global state like Dark Mode across your entire application without prop drilling."
+---
+
+# Context API for Theming
+
+Yesterday, we solved "Prop Drilling" for layout and structure by using Component Composition (the `children` prop). 
+
+But what about **Global State**? What if the user clicks a "Toggle Dark Mode" button in the Navbar, and a deeply nested `FooterText` component needs to know about it so it can change from black to white? 
+
+Passing an `isDarkMode` boolean down through 15 layers of components is an architectural nightmare.
+
+This is exactly what the **React Context API** is for.
+
+## What is Context?
+
+Context provides a way to pass data through the component tree without having to pass props down manually at every level. It is essentially a global variable that is localized to a specific part of your React app.
+
+## Building a Theme Provider
+
+To use Context, we need two things:
+1. The **Context** itself (the invisible portal).
+2. The **Provider** (the wrapper that supplies the data into the portal).
+
+```jsx
+import { createContext, useContext, useState } from 'react';
+
+// 1. Create the invisible portal
+const ThemeContext = createContext();
+
+// 2. Create the wrapper component
+export function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  return (
+    // We shove our state and our toggle function into the portal
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className={theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}>
+        {children}
+      </div>
+    </ThemeContext.Provider>
+  );
+}
+```
+
+## Consuming the Context
+
+Now, we wrap our entire application in `<ThemeProvider>`. 
+
+```jsx
+function App() {
+  return (
+    <ThemeProvider>
+      <Navbar />
+      <MainContent />
+    </ThemeProvider>
+  );
+}
+```
+
+Because `Navbar` is inside the Provider, any component inside of it (no matter how deep) can simply reach up into the portal and grab the theme data using the `useContext` hook!
+
+```jsx
+// Deep inside the Navbar component...
+import { useContext } from 'react';
+import { ThemeContext } from './ThemeProvider';
+
+export function ThemeToggleButton() {
+  // Reach into the portal!
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  return (
+    <button onClick={toggleTheme}>
+      Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+    </button>
+  );
+}
+```
+
+<Analogy 
+  title="The Radio Tower" 
+  description="Passing props is like handing a written message from person to person down a long line. Context is like building a Radio Tower. The Provider broadcasts the signal, and any component with a radio (useContext) can tune in and listen instantly, no matter where they are."
+/>
+
+## When to use Context
+
+Context is incredibly powerful, but you shouldn't use it for everything. Every time the data in a Provider changes, **every single component** listening to that context will re-render.
+
+**Good uses for Context:**
+- Theming (Light/Dark mode)
+- Authenticated User data (Is the user logged in? What is their avatar?)
+- Language Localization (English vs Spanish)
+
+**Bad uses for Context:**
+- High-frequency changing data (like mouse coordinates or typing in a text input). This will cause massive performance issues.
+
+## Wrapping Up
+
+The Context API is your weapon against Prop Drilling for global data. Create a Provider, wrap your app, and `useContext` wherever you need the data!

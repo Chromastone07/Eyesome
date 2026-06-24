@@ -1,0 +1,82 @@
+---
+title: "In-place Reversal of a LinkedList"
+day: 6
+description: "Learn how to reverse a linked list without using any extra memory by carefully manipulating pointers."
+---
+
+# In-place Reversal of a LinkedList
+
+Reversing a Linked List is one of the most classic, widely-asked interview questions of all time. It is a fundamental exercise in pointer manipulation. 
+
+While it's easy to reverse a list if you just copy all the values into an array, reverse the array, and build a new list, that takes `O(N)` extra memory. The real challenge is doing it **in-place**, using strictly `O(1)` memory.
+
+## The Core Concept
+
+To reverse a linked list in-place, you need to systematically iterate through the list and change the `next` pointer of every single node so that it points backwards instead of forwards.
+
+To do this safely without losing the rest of your list, you need three pointers:
+1. `prev`: Keeps track of the node we just processed. (Starts as `null`)
+2. `current`: The node we are currently reversing. (Starts as `head`)
+3. `nextTemp`: A temporary pointer to save the rest of the list before we break the link.
+
+<Analogy 
+  title="The Rope Bridge" 
+  description="Imagine walking across a rope bridge, and you need to unhook the plank you are standing on and reattach it behind you. Before you unhook it, you must grab onto the NEXT plank first, otherwise you will fall into the abyss (lose your reference to the rest of the list)!"
+/>
+
+## The Algorithm
+
+Here is the bulletproof while-loop for reversing a linked list:
+
+```javascript
+function reverseLinkedList(head) {
+  let prev = null;
+  let current = head;
+
+  while (current !== null) {
+    // 1. SAVE the rest of the list
+    let nextTemp = current.next;
+
+    // 2. REVERSE the pointer
+    current.next = prev;
+
+    // 3. STEP FORWARD (shift prev and current)
+    prev = current;
+    current = nextTemp;
+  }
+
+  // When current is null, prev is sitting on the very last node.
+  // This is the new head of our reversed list!
+  return prev;
+}
+```
+
+## Step-by-Step Visualization
+
+Imagine the list: `1 -> 2 -> 3 -> null`
+
+**Iteration 1:**
+- `current` is `1`.
+- Save `nextTemp` as `2`.
+- Point `1.next` backwards to `prev` (`null`). So we have `1 -> null`.
+- Shift `prev` up to `1`. Shift `current` up to `2`.
+
+**Iteration 2:**
+- `current` is `2`.
+- Save `nextTemp` as `3`.
+- Point `2.next` backwards to `prev` (`1`). Now we have `2 -> 1 -> null`.
+- Shift `prev` to `2`. Shift `current` to `3`.
+
+**Iteration 3:**
+- `current` is `3`.
+- Save `nextTemp` as `null`.
+- Point `3.next` to `2`. Now we have `3 -> 2 -> 1 -> null`.
+- Shift `prev` to `3`. Shift `current` to `null`.
+
+The loop ends because `current` is `null`. We return `prev`, which is `3`. The list is fully reversed!
+
+## Wrapping Up
+
+This pattern isn't just for reversing entire lists. You will use exactly this same logic when asked to reverse *sub-lists* (e.g., "Reverse a linked list from position M to N") or "Reverse a linked list in groups of K". 
+
+Memorize the three-pointer dance: Save, Reverse, Step Forward!

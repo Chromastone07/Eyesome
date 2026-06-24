@@ -30,7 +30,7 @@ const systemDesignDay07: Slide[] = [
       'Test your knowledge on Scaling, Load Balancers, and Caching.',
       'Pass to unlock week 2!',
     ],
-    nextDay: { day: 8, title: 'Microservices Architecture' },
+    nextDay: { day: 8, title: 'Deep Dive into System Components' },
   },
 ]
 
