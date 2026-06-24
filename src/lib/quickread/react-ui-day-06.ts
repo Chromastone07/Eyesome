@@ -31,7 +31,7 @@ const reactUiDay06: Slide[] = [
         nodes: [
           { label: '<ThemeProvider>', sublabel: 'Broadcasts data', accent: 'purple' },
         ],
-        arrow: 'down',
+        arrow: 'right',
       },
       {
         nodes: [
