@@ -28,6 +28,7 @@ export default function RootLayout({
           <Footer />
           <CookieBanner />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
