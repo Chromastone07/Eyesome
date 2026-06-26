@@ -1,0 +1,69 @@
+---
+title: "API Design: REST vs GraphQL"
+day: 9
+description: "Understand the core differences between the two most popular API architectures and when to use them."
+---
+
+# API Design: REST vs GraphQL
+
+Yesterday, we learned that in a Microservices architecture, independent services must communicate over the network. But *how* exactly do they talk to each other? What language do they speak?
+
+The two most popular paradigms for building APIs (Application Programming Interfaces) on the web today are **REST** and **GraphQL**. Understanding the trade-offs between them is a fundamental system design skill.
+
+## REST (Representational State Transfer)
+
+REST is the traditional, battle-tested standard of the web. It is built entirely around **Resources** (like `Users`, `Posts`, or `Comments`).
+
+In a REST API, you interact with these resources using standard HTTP verbs:
+- `GET /users/123` (Fetch user 123)
+- `POST /users` (Create a new user)
+- `DELETE /users/123` (Delete user 123)
+
+### The Problem with REST: Over-fetching and Under-fetching
+
+Imagine you are building the Facebook profile page. You need the user's name, their last 5 posts, and their friend count.
+
+In a pure REST API, you might have to make three separate network requests:
+1. `GET /users/123` (Returns the user object, but also returns their email, address, and 50 other fields you didn't need — this is **Over-fetching**).
+2. `GET /users/123/posts?limit=5`
+3. `GET /users/123/friends/count`
+
+Making multiple network requests (Under-fetching) slows down mobile apps on poor connections.
+
+## GraphQL
+
+GraphQL was created by Facebook in 2012 specifically to solve the over-fetching and under-fetching problems of REST.
+
+Instead of having dozens of different endpoints (`/users`, `/posts`), a GraphQL API has exactly **one** endpoint (`POST /graphql`).
+
+Instead of the server deciding what data to return, the **client** (the frontend) sends a query explicitly asking for exactly what it wants, and nothing more.
+
+```graphql
+# The frontend sends this query:
+query {
+  user(id: "123") {
+    name
+    friendCount
+    posts(limit: 5) {
+      title
+    }
+  }
+}
+```
+
+The server responds with a JSON object that exactly matches the shape of the query. You get all the data in a single network request, with zero wasted bytes!
+
+<Analogy 
+  title="The Restaurant Menu" 
+  description="REST is like ordering from a set menu. If you order the 'Burger Combo', you get the burger, fries, and a drink, even if you only wanted the burger (Over-fetching). GraphQL is like a buffet. You walk up with a plate and specifically pick exactly 1 burger, 0 fries, and 2 drinks. You get exactly what you asked for."
+/>
+
+## Which should you choose?
+
+If GraphQL is so efficient, why doesn't everyone use it for everything?
+
+- **Caching:** REST is incredibly easy to cache at the network level (using CDNs) because every resource has a unique URL (`/users/123`). GraphQL is notoriously difficult to cache because everything goes to the same `/graphql` URL.
+- **Complexity:** Building a GraphQL server requires writing complex "Resolvers" to stitch data together, and protecting against malicious clients asking for deeply nested data (e.g., `user -> friends -> friends -> friends`) that could crash your database.
+
+**The Rule of Thumb:** 
+Use REST for server-to-server communication or simple public APIs. Use GraphQL when you have a complex frontend client (like a mobile app) that needs heavily nested data over a slow network connection.

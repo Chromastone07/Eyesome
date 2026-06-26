@@ -1,0 +1,65 @@
+---
+title: "Weekly Checkpoint"
+day: 7
+description: "Test your retention of Week 1 concepts: CSS Architecture, Tailwind, Framer Motion, and Component Composition."
+---
+
+# Weekly Checkpoint
+
+Congratulations on finishing Week 1 of the React UI Mastery track!
+
+So far, you have learned how to stop writing messy CSS files, how to rapidly prototype with Tailwind, how to add buttery-smooth animations, and how to architect flexible components that don't rely on 30 different props.
+
+Before we move on to Week 2 (where we tackle complex Data Fetching and State Management), it's time to pause and test your retention.
+
+## Active Recall
+
+Reading a technical article makes you *feel* like you learned something. But if you don't actively retrieve that information from your brain, you will forget it within 48 hours. 
+
+To actually build strong neural pathways, you must practice **Active Recall**.
+
+## Instructions
+
+Below is a short quiz covering the most important concepts from the last 6 days. 
+
+Take your time. If you get a question wrong, the quiz will explain why. If you find yourself struggling with a specific concept, don't just guess—go back and re-read the specific day's lesson!
+
+You must pass this quiz to officially complete Week 1. Good luck!
+
+<Quiz 
+  questions={[
+    {
+      question: "Which of the following is the main problem that Tailwind CSS solves?",
+      options: [
+        "It makes your JavaScript execute faster.",
+        "It eliminates naming fatigue and prevents your CSS files from growing infinitely large.",
+        "It automatically optimizes your images for the web.",
+        "It forces you to write Semantic HTML."
+      ],
+      correctIndex: 1,
+      explanation: "Tailwind's utility-first approach means you never have to think up a class name like '.card-inner-wrapper' ever again, and the final CSS bundle size is extremely small."
+    },
+    {
+      question: "When building a highly flexible <Card> component, instead of passing 10 different props for the title, subtitle, and buttons, what React feature should you use?",
+      options: [
+        "The useEffect Hook",
+        "The Context API",
+        "The children prop (Component Composition)",
+        "Redux"
+      ],
+      correctIndex: 2,
+      explanation: "Component Composition allows the developer to pass whatever they want inside the opening and closing tags of the <Card>, giving them total layout flexibility without bloating your component with props."
+    },
+    {
+      question: "What is the best use-case for the React Context API?",
+      options: [
+        "Tracking the rapid X and Y coordinates of a user's mouse cursor.",
+        "Passing a 'Dark Mode' theme variable to every component in your app without prop drilling.",
+        "Storing large video files in memory.",
+        "Handling form validation state on a single login page."
+      ],
+      correctIndex: 1,
+      explanation: "Context is perfect for global, low-frequency changing state like Theming or User Auth. You should NOT use it for rapidly changing data (like mouse coordinates) because it triggers app-wide re-renders."
+    }
+  ]}
+/>

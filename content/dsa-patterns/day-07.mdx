@@ -1,0 +1,61 @@
+---
+title: "Weekly Checkpoint"
+day: 7
+description: "Test your retention of Week 1 patterns: Sliding Window, Two Pointers, Fast & Slow, Merge Intervals, Cyclic Sort, and Reversal."
+---
+
+# Weekly Checkpoint
+
+Congratulations on finishing Week 1 of the DSA Patterns track!
+
+So far, you have learned the 6 most common fundamental patterns for solving array and linked list problems. Instead of memorizing 100 different Leetcode problems, you now have a mental framework to categorize problems the second you read them.
+
+Before we move on to Week 2, it is time to practice **Active Recall**.
+
+## The Forgetting Curve
+
+If you don't actively try to retrieve information from your brain, you will forget roughly 70% of what you read within 24 hours. Reading makes you feel smart; recalling makes you actually smart.
+
+## Instructions
+
+Below is a short quiz testing your ability to identify which pattern belongs to which problem description. In a real interview, identifying the pattern is 80% of the battle. 
+
+Take your time. If you get a question wrong, go back and re-read that specific day's lesson. You must pass this quiz to officially complete Week 1. Good luck!
+
+<Quiz 
+  questions={[
+    {
+      question: "Which pattern should you use if the problem asks you to find the 'longest contiguous subarray' that satisfies a condition?",
+      options: [
+        "Two Pointers",
+        "Sliding Window",
+        "Cyclic Sort",
+        "Fast & Slow Pointers"
+      ],
+      correctIndex: 1,
+      explanation: "Whenever you see 'contiguous subarray' or 'substring' along with 'longest', 'shortest', or 'maximum', it is almost always a Sliding Window problem."
+    },
+    {
+      question: "If a problem states that an array contains numbers in the strict range of 1 to N, and asks you to find the missing number, which O(N) pattern should you immediately use?",
+      options: [
+        "Merge Intervals",
+        "Sliding Window",
+        "Cyclic Sort",
+        "Two Pointers"
+      ],
+      correctIndex: 2,
+      explanation: "Cyclic Sort is a magical O(N) sorting algorithm that only works when the numbers are strictly in a given range like 1 to N, allowing you to swap numbers to their 'assigned seats'."
+    },
+    {
+      question: "Which pattern uses two pointers moving at different speeds to detect cycles in a Linked List?",
+      options: [
+        "Fast & Slow Pointers",
+        "Merge Intervals",
+        "In-place Reversal",
+        "Sliding Window"
+      ],
+      correctIndex: 0,
+      explanation: "Also known as Floyd's Cycle Finding Algorithm, the Fast pointer moves 2 steps while the Slow pointer moves 1 step. If they meet, there is a cycle!"
+    }
+  ]}
+/>
